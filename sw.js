@@ -15,5 +15,12 @@ workbox.precaching.precacheAndRoute([
   
 workbox.routing.registerRoute(
   () => '/',
-  new workbox.strategies.StaleWhileRevalidate()
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: 'last-man-standing-cache',
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxAgeSeconds: 24 * 60 * 60 * 365,
+      }),
+    ],
+  })
 );
