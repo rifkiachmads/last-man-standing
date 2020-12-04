@@ -1,0 +1,103 @@
+<head>
+
+</head>
+<body>
+    <p>You have one team mate left?</p>
+    <button id="james-bond-play-btn">Play james bond theme</button>
+    <audio id="james-bond-audio" src="/007 James Bond Theme.mp3" controls style="opacity: 0;" preload="auto"></audio>
+
+    <div id="end-game-action" style="opacity: 0;">
+        <p>what is the result?</p>
+        <button id="win-btn">win</button>
+        <button id="lose-btn">lose</button>
+    </div>
+
+    <audio id="win-audio" src="/Surprised (Sound Effects).mp3"></audio>
+    <audio id="lose-audio" src="/Ba Dum Tss!.mp3"></audio>
+</body>
+
+<script>
+    var jamesBondAudio = document.getElementById('james-bond-audio')
+    var winAudio = document.getElementById('win-audio')
+    var loseAudio = document.getElementById('lose-audio')
+    
+    var playBtn = document.getElementById('james-bond-play-btn')
+    var winBtn = document.getElementById('win-btn')
+    var loseBtn = document.getElementById('lose-btn')
+
+    var endGameContainer = document.getElementById('end-game-action')
+    
+    // play james bond theme song
+    playBtn.addEventListener('click', () => {
+        jamesBondAudio.play();
+        jamesBondAudio.style.opacity = 1;
+        endGameContainer.style.opacity = 1;
+        playBtn.style.visibility = 'hidden';
+    });
+
+    // end game action
+    winBtn.addEventListener('click', () => {
+        jamesBondAudio.pause();
+        jamesBondAudio.style.opacity = 0;
+        winAudio.play();
+        endGameContainer.classList.add('win');
+    })
+
+    loseBtn.addEventListener('click', () => {
+        jamesBondAudio.pause();
+        jamesBondAudio.style.opacity = 0;
+        loseAudio.play();
+        endGameContainer.classList.add('lose');
+    })
+</script>
+
+<script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+</script>
+
+<style>
+    body {
+        max-width: 600px;
+        max-height: 100vh;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    audio {
+        width: 100%;
+    }
+
+    #end-game-action {
+        position: relative;
+    }
+
+    .win::after,
+    .lose::after {
+        position: absolute;
+        text-align: center;
+        color: white;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        right: 0;
+    }
+    
+    .win::after {
+        padding-top: 2rem;
+        content: 'damn lucky bastard!';
+        background-color: green;
+    }
+
+    .lose::after {
+        padding-top: 2rem;
+        content: 'Booooooo! as expected';
+        background-color: red;
+    }
+</style>
