@@ -4,7 +4,7 @@
 <body>
     <p>You have one team mate left?</p>
     <button id="james-bond-play-btn">Play james bond theme</button>
-    <audio id="james-bond-audio" src="/007 James Bond Theme.mp3" controls style="opacity: 0;" preload="auto"></audio>
+    <audio id="james-bond-audio" src="007 James Bond Theme.mp3" controls style="opacity: 0;" preload="auto"></audio>
 
     <div id="end-game-action" style="opacity: 0;">
         <p>what is the result?</p>
@@ -12,8 +12,8 @@
         <button id="lose-btn">lose</button>
     </div>
 
-    <audio id="win-audio" src="/Surprised (Sound Effects).mp3"></audio>
-    <audio id="lose-audio" src="/Ba Dum Tss!.mp3"></audio>
+    <audio id="win-audio" src="Surprised (Sound Effects).mp3"></audio>
+    <audio id="lose-audio" src="Ba Dum Tss!.mp3"></audio>
 </body>
 
 <script>
@@ -56,7 +56,7 @@
     if ('serviceWorker' in navigator) {
       // Use the window load event to keep the page load performant
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js');
+        navigator.serviceWorker.register('sw.js');
       });
     }
 </script>
