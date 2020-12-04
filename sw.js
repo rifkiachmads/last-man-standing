@@ -1,5 +1,6 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.0.0/workbox-sw.js');
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.0.2/workbox-sw.js');
 
+workbox.setConfig({ debug: true });
 
 workbox.precaching.precacheAndRoute([
     { url: 'index.html', revision: null },
