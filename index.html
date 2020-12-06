@@ -9,6 +9,8 @@
     <!-- credit to JrSavagery Diez: https://www.youtube.com/watch?v=Q9-fYdy12PY -->
     <audio id="mission-impossible-audio" src="Mission Impossible Theme Song (Flute Cover).mp3" controls style="opacity: 0;" preload="auto" crossorigin="anonymous"></audio>
 
+    <button id="reload-btn" style="display: none">restart</button>
+
     <div id="end-game-action" style="opacity: 0;">
         <p>what is the result?</p>
         <div class="flex-row" style="display: flex; flex-direction: row; justify-content: center;">
@@ -22,7 +24,7 @@
     <audio id="lose-audio" src="Ba Dum Tss!.mp3" preload="auto" crossorigin="anonymous"></audio>
 </body>
 
-<script>
+<script>    
     var missionImpossibleAudio = document.getElementById('mission-impossible-audio')
     var winAudio = document.getElementById('win-audio')
     var loseAudio = document.getElementById('lose-audio')
@@ -32,6 +34,7 @@
     var loseBtn = document.getElementById('lose-btn')
 
     var endGameContainer = document.getElementById('end-game-action')
+    var reloadBtn = document.getElementById('reload-btn')
     
     // play james bond theme song
     playBtn.addEventListener('click', () => {
@@ -47,6 +50,7 @@
         missionImpossibleAudio.style.opacity = 0;
         winAudio.play();
         endGameContainer.classList.add('win');
+        reloadBtn.style.display = 'block';
     })
 
     loseBtn.addEventListener('click', () => {
@@ -54,6 +58,11 @@
         missionImpossibleAudio.style.opacity = 0;
         loseAudio.play();
         endGameContainer.classList.add('lose');
+        reloadBtn.style.display = 'block';
+    })
+
+    reloadBtn.addEventListener('click', () => {
+        location.reload();
     })
 </script>
 
@@ -91,6 +100,7 @@
         color: white;
         width: 100%;
         height: 100%;
+        top: 0;
         left: 0;
         right: 0;
     }
