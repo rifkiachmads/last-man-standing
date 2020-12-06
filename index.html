@@ -1,27 +1,33 @@
 <head>
-
+    <title>Clutch or Gae</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <p>You have one team mate left?</p>
-    <button id="james-bond-play-btn">Play james bond theme</button>
-    <audio id="james-bond-audio" src="007 James Bond Theme.mp3" controls style="opacity: 0;" preload="auto"></audio>
+    <button id="mission-impossible-play-btn">Play mission impossible theme</button>
+    <!-- credit to JrSavagery Diez: https://www.youtube.com/watch?v=Q9-fYdy12PY -->
+    <audio id="mission-impossible-audio" src="Mission Impossible Theme Song (Flute Cover).mp3" controls style="opacity: 0;" preload="auto" crossorigin="anonymous"></audio>
 
     <div id="end-game-action" style="opacity: 0;">
         <p>what is the result?</p>
-        <button id="win-btn">win</button>
-        <button id="lose-btn">lose</button>
+        <div class="flex-row" style="display: flex; flex-direction: row; justify-content: center;">
+            <button id="win-btn">clutch</button>
+            <p style="margin: 0 2.5rem">or</p>
+            <button id="lose-btn">gae</button>
+        </div>
     </div>
 
-    <audio id="win-audio" src="Surprised (Sound Effects).mp3"></audio>
-    <audio id="lose-audio" src="Ba Dum Tss!.mp3"></audio>
+    <audio id="win-audio" src="Surprised (Sound Effects).mp3" preload="auto" crossorigin="anonymous"></audio>
+    <audio id="lose-audio" src="Ba Dum Tss!.mp3" preload="auto" crossorigin="anonymous"></audio>
 </body>
 
 <script>
-    var jamesBondAudio = document.getElementById('james-bond-audio')
+    var missionImpossibleAudio = document.getElementById('mission-impossible-audio')
     var winAudio = document.getElementById('win-audio')
     var loseAudio = document.getElementById('lose-audio')
     
-    var playBtn = document.getElementById('james-bond-play-btn')
+    var playBtn = document.getElementById('mission-impossible-play-btn')
     var winBtn = document.getElementById('win-btn')
     var loseBtn = document.getElementById('lose-btn')
 
@@ -29,23 +35,23 @@
     
     // play james bond theme song
     playBtn.addEventListener('click', () => {
-        jamesBondAudio.play();
-        jamesBondAudio.style.opacity = 1;
+        missionImpossibleAudio.play();
+        missionImpossibleAudio.style.opacity = 1;
         endGameContainer.style.opacity = 1;
         playBtn.style.visibility = 'hidden';
     });
 
     // end game action
     winBtn.addEventListener('click', () => {
-        jamesBondAudio.pause();
-        jamesBondAudio.style.opacity = 0;
+        missionImpossibleAudio.pause();
+        missionImpossibleAudio.style.opacity = 0;
         winAudio.play();
         endGameContainer.classList.add('win');
     })
 
     loseBtn.addEventListener('click', () => {
-        jamesBondAudio.pause();
-        jamesBondAudio.style.opacity = 0;
+        missionImpossibleAudio.pause();
+        missionImpossibleAudio.style.opacity = 0;
         loseAudio.play();
         endGameContainer.classList.add('lose');
     })
